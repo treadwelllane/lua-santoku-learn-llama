@@ -1,0 +1,7 @@
+build/
+lua_modules/
+*.swp
+*.swo
+.luacov
+luacov.*.out
+test/res
