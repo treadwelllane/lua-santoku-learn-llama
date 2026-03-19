@@ -65,13 +65,13 @@ test("eurlex classifier (llama)", function ()
 
   str.printf("[Llama] Encoding train (%d texts)\n", train.n)
   local train_texts = collect_texts(train.text_iter, train.n)
-  local train_codes = enc:encode(train_texts, true)
+  local train_codes = enc:encode(train_texts)
   train_texts = nil -- luacheck: ignore
   str.printf("[Llama] Train encoded %s\n", sw())
 
   str.printf("[Llama] Encoding dev (%d texts)\n", dev.n)
   local dev_texts = collect_texts(dev.text_iter, dev.n)
-  local dev_codes = enc:encode(dev_texts, true)
+  local dev_codes = enc:encode(dev_texts)
   dev_texts = nil -- luacheck: ignore
   str.printf("[Llama] Dev encoded %s\n", sw())
 
@@ -116,7 +116,7 @@ test("eurlex classifier (llama)", function ()
 
   str.printf("[Llama] Encoding test (%d texts)\n", test_set.n)
   local test_texts = collect_texts(test_set.text_iter, test_set.n)
-  local test_codes = enc:encode(test_texts, true)
+  local test_codes = enc:encode(test_texts)
   test_texts = nil -- luacheck: ignore
   str.printf("[Llama] Test encoded %s\n", sw())
 

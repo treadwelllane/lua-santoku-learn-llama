@@ -63,7 +63,7 @@ static inline int tk_llama_encode_lua (lua_State *L) {
   luaL_checktype(L, 2, LUA_TTABLE);
   int n = (int)lua_objlen(L, 2);
   int32_t dim = ll->n_embd;
-  int do_norm = lua_toboolean(L, 3);
+  int do_norm = lua_isnoneornil(L, 3) ? 1 : lua_toboolean(L, 3);
 
   tk_fvec_t *out = tk_fvec_create(L, (uint64_t)n * (uint64_t)dim, 0, 0);
   out->n = (uint64_t)n * (uint64_t)dim;

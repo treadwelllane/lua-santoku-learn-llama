@@ -64,11 +64,11 @@ test("snli classifier (llama)", function ()
   str.printf("[Llama] n_embd=%d %s\n", n_dims, sw())
 
   str.printf("[Llama] Encoding train (%d pairs)\n", train.n)
-  local train_codes = enc:encode(build_pair_texts(train), true)
+  local train_codes = enc:encode(build_pair_texts(train))
   str.printf("[Llama] Train encoded %s\n", sw())
 
   str.printf("[Llama] Encoding val (%d pairs)\n", validate.n)
-  local val_codes = enc:encode(build_pair_texts(validate), true)
+  local val_codes = enc:encode(build_pair_texts(validate))
   str.printf("[Llama] Val encoded %s\n", sw())
 
   str.printf("[Ridge] Fitting\n")
@@ -105,7 +105,7 @@ test("snli classifier (llama)", function ()
 
   local function eval_split (name, split)
     str.printf("[Llama] Encoding %s (%d pairs)\n", name, split.n)
-    local codes = enc:encode(build_pair_texts(split), true)
+    local codes = enc:encode(build_pair_texts(split))
     str.printf("[Llama] %s encoded %s\n", name, sw())
     local _, labels = ridge_obj:label(codes, split.n, 1)
     local stats = eval.class_accuracy(labels, split.sol_offsets, split.sol_neighbors, split.n, n_classes)

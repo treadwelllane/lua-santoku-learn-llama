@@ -54,12 +54,12 @@ test("newsgroups classifier (llama)", function ()
   str.printf("[Llama] n_embd=%d %s\n", n_dims, sw())
 
   str.printf("[Llama] Encoding train (%d texts)\n", train.n)
-  local train_codes = enc:encode(train.problems, true)
+  local train_codes = enc:encode(train.problems)
   train.problems = nil
   str.printf("[Llama] Train encoded %s\n", sw())
 
   str.printf("[Llama] Encoding val (%d texts)\n", validate.n)
-  local val_codes = enc:encode(validate.problems, true)
+  local val_codes = enc:encode(validate.problems)
   validate.problems = nil
   str.printf("[Llama] Val encoded %s\n", sw())
 
@@ -92,7 +92,7 @@ test("newsgroups classifier (llama)", function ()
   val_codes = nil -- luacheck: ignore
 
   str.printf("[Llama] Encoding test (%d texts)\n", test_set.n)
-  local test_codes = enc:encode(test_set.problems, true)
+  local test_codes = enc:encode(test_set.problems)
   test_set.problems = nil
   local _, test_labels = ridge_obj:label(test_codes, test_set.n, 1)
   test_codes = nil -- luacheck: ignore
