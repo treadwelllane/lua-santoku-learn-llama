@@ -1,6 +1,6 @@
 local env = {
   name = "santoku-learn-llama",
-  version = "0.0.2-1",
+  version = "0.0.3-1",
   license = "MIT",
   public = true,
   dependencies = {
@@ -25,7 +25,7 @@ local env = {
   },
   test = {
     dependencies = {
-      "santoku-learn >= 0.0.9-1",
+      "santoku-learn >= 0.0.10-1",
       "santoku-fs >= 0.0.41-1",
       "lua-cjson >= 2.1.0.10-1",
     }
