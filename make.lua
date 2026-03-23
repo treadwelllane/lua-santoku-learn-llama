@@ -1,12 +1,12 @@
 local env = {
   name = "santoku-learn-llama",
-  version = "0.0.6-1",
+  version = "0.0.7-1",
   license = "MIT",
   public = true,
   dependencies = {
     "lua == 5.1",
     "santoku >= 0.0.322-1",
-    "santoku-matrix >= 0.0.299-1",
+    "santoku-matrix >= 0.0.300-1",
   },
   cflags = {
     "-std=gnu11", "-D_GNU_SOURCE", "-Wall", "-Wextra",
