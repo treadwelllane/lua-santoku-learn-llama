@@ -25,7 +25,7 @@ local env = {
   },
   test = {
     dependencies = {
-      "santoku-learn >= 0.0.24-1",
+      "santoku-learn >= 0.0.26-1",
       "santoku-fs >= 0.0.43-1",
       "lua-cjson >= 2.1.0.10-1",
     }
