@@ -65,8 +65,14 @@ static inline int tk_llama_encode_lua (lua_State *L) {
   int32_t dim = ll->n_embd;
   int do_norm = lua_isnoneornil(L, 3) ? 1 : lua_toboolean(L, 3);
 
-  tk_fvec_t *out = tk_fvec_create(L, (uint64_t)n * (uint64_t)dim);
-  out->n = (uint64_t)n * (uint64_t)dim;
+  int has_output = !lua_isnoneornil(L, 4);
+  tk_fvec_t *out;
+  if (has_output) {
+    out = tk_fvec_peek(L, 4);
+  } else {
+    out = tk_fvec_create(L, (uint64_t)n * (uint64_t)dim);
+    out->n = (uint64_t)n * (uint64_t)dim;
+  }
 
   const struct llama_vocab *vocab = llama_model_get_vocab(ll->model);
   int32_t max_tok = ll->n_ctx;
@@ -205,6 +211,9 @@ done:
   free(tok_lens);
   if (rc != 0)
     return rc;
+  if (has_output) {
+    return 0;
+  }
   lua_pushinteger(L, dim);
   return 2;
 }
