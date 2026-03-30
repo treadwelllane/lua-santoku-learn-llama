@@ -68,7 +68,7 @@ static inline int tk_llama_encode_lua (lua_State *L) {
   int has_output = !lua_isnoneornil(L, 4);
   tk_fvec_t *out;
   if (has_output) {
-    out = tk_fvec_peek(L, 4);
+    out = tk_fvec_peek(L, 4, "output");
   } else {
     out = tk_fvec_create(L, (uint64_t)n * (uint64_t)dim);
     out->n = (uint64_t)n * (uint64_t)dim;
